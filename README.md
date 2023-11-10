@@ -1,2 +1,2 @@
-# Especificaciones del proyecto UML y API REST
-X
+# README
+Especificaciones del proyecto UML y API REST
