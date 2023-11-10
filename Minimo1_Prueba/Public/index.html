@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inicio juego</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .jumbotron {
+        background-color: #f4511e;
+        color: #fff;
+        margin: 0px 0;
+        padding: 10px 25px;
+
+       }
+       .form-inline {
+
+        padding: 10px 25px;
+
+       }
+        .container-fluid {
+        background-color: #f4511e;
+        color: #fff;
+
+
+
+       }
+        .btn-group{
+        text-align: right;
+      }
+        .pull-right {
+        float: right !important;
+      }
+
+
+    </style>
+    <script>
+        $(document).ready(function(){
+        $("#iniciar").hide();
+        $("#registro").hide();
+          $("#inicio_buton").click(function(){
+            $("#inicio").hide();
+            $("#test").hide();
+            $("#iniciar").show();
+          });
+          $("#regis_buton").click(function(){
+            $("#inicio").hide();
+            $("#test").hide();
+            $("#registro").show();
+          });
+          $("#menu").click(function(){
+            $("#iniciar").hide();
+            $("#registro").hide();
+            $("#inicio").show();
+            $("#test").show();
+          });
+        });
+    </script>
+</head>
+<body>
+<div id="menu" class="jumbotron">
+
+    <p>MENU</p>
+</div>
+<div  id="inicio" class="jumbotron">
+    <div class="pull-right">
+        <div class="btn-group " style="text-align: right;">
+            <button id="inicio_buton" type="button" class="btn btn-primary">Iniciar sesión</button>
+            <button id="regis_buton" type="button" class="btn btn-primary">Registrarse</button>
+        </div>
+    </div>
+</div>
+<div id="iniciar" class="container-fluid text-center">
+    <h2>Iniciar sesión</h2>
+
+    <form class="form-inline" action="/action_page.php">
+        <div class="form-group">
+            <label for="username_ini">Usuario:</label>
+            <input type="email" class="form-control" id="username_ini" placeholder="Enter username" name="username">
+
+        </div>
+    </form>
+    <form class="form-inline" action="/action_page.php">
+        <div class="form-group">
+            <label for="contraseña_ini">Contraseña:</label>
+            <input type="password" class="form-control" id="contraseña_ini" placeholder="Enter password" name="contraseña">
+        </div>
+    </form>
+    <button id="ini" type="iniciar_s" class="btn btn-primary">Iniciar sesión</button>
+
+</div>
+<div id="registro" class="container-fluid text-center">
+    <h2>Registrarse</h2>
+
+    <form class="form-inline" action="/action_page.php">
+        <div class="form-group">
+            <label for="username_reg">Usuario:</label>
+            <input type="email" class="form-control" id="username_reg" placeholder="Enter username" name="username">
+
+        </div>
+    </form>
+    <form class="form-inline" action="/action_page.php">
+        <div class="form-group">
+            <label for="contraseña_reg">Contraseña:</label>
+            <input type="password" class="form-control" id="contraseña_reg" placeholder="Enter password" name="contraseña">
+        </div>
+    </form>
+    <button id="reg" type="input" class="btn btn-primary">Registrarse</button>
+
+</div>
+<div id="test" class="jumbotron text-center">
+
+    <h1>Nombre juego</h1>
+
+    <p>El mejor juego.</p>
+
+
+</div>
+
+</body>
+</html>
