@@ -12,17 +12,26 @@
         background-color: #f4511e;
         color: #fff;
         margin: 0px 0;
+        padding: 50px 25px;
+
+       }
+       .bg-1 {
+        background-color: #f4511e;
+        color: #fff;
+        margin: 0px 0;
         padding: 10px 25px;
 
        }
-       .form-inline {
+       .form-group {
 
-        padding: 10px 25px;
+        color: #000000;
 
        }
         .container-fluid {
         background-color: #f4511e;
         color: #fff;
+        margin: 0px 0;
+        padding: 15px 25px;
 
 
 
@@ -33,7 +42,30 @@
         .pull-right {
         float: right !important;
       }
+.navbar {
+  margin-bottom: 0;
+  background-color: #f4511e;
+  z-index: 9999;
+  border: 0;
+  font-size: 12px !important;
+  line-height: 1.42857143 !important;
+  letter-spacing: 4px;
+  border-radius: 0;
+}
 
+.navbar li a, .navbar .navbar-brand {
+  color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+  color: #f4511e !important;
+  background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #fff !important;
+}
 
     </style>
     <script>
@@ -44,11 +76,13 @@
             $("#inicio").hide();
             $("#test").hide();
             $("#iniciar").show();
+            $("#registro").hide();
           });
           $("#regis_buton").click(function(){
             $("#inicio").hide();
             $("#test").hide();
             $("#registro").show();
+            $("#iniciar").hide();
           });
           $("#menu").click(function(){
             $("#iniciar").hide();
@@ -60,60 +94,98 @@
     </script>
 </head>
 <body>
-<div id="menu" class="jumbotron">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a id="menu" class="navbar-brand" href="#">Menu</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#tienda">TIENDA</a></li>
+                <li><button id="inicio_buton" type="button" class="btn btn-primary">Iniciar sesión</button></li>
+                <li><button id="regis_buton" type="button" class="btn btn-primary">Registrarse</button></li>
 
-    <p>MENU</p>
-</div>
-<div  id="inicio" class="jumbotron">
-    <div class="pull-right">
-        <div class="btn-group " style="text-align: right;">
-            <button id="inicio_buton" type="button" class="btn btn-primary">Iniciar sesión</button>
-            <button id="regis_buton" type="button" class="btn btn-primary">Registrarse</button>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div id="iniciar" class="container-fluid text-center">
+    <div class="container-border bg-1 text-center">
+        <h3>Juego</h3>
+        <img src="espinete.jpg" alt="espi" style="width:10%">
+        <div class="row justify-content-around align-items-center">
+            <div style="float: center" class="col-sm-4">
+                <div style="float: center" class="panel panel-default text-center" >
+                    <div class="panel-heading">
+                        <h4>Iniciar sesión</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label style= "float: left " for="usr_ini">Usuario:</label>
+                            <input type="text" class="form-control" id="usr_ini">
+                        </div>
+                        <div class="form-group">
+                            <label style= "float: left " for="pwd_ini">Contraseña:</label>
+                            <input type="password" class="form-control" id="pwd_ini">
+                        </div>
+                        <button class="btn btn-success w-100">Iniciar sesión</button>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div id="iniciar" class="container-fluid text-center">
-    <h2>Iniciar sesión</h2>
+<div id="registro" class="container-fluid bg-1 text-center">
+    <div class="container-border bg-1 text-center">
+        <h3>Juego</h3>
+        <img src="espinete.jpg" alt="espi" style="width:10%">
+        <div class="row justify-content-around align-items-center">
+            <div style="float: center" class="col-sm-4">
+                <div style="float: center" class="panel panel-default text-center" >
+                    <div class="panel-heading">
+                        <h4>Registrarse</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label style= "float: left " for="usr_reg">Usuario:</label>
+                            <input type="text" class="form-control" id="usr_reg">
+                        </div>
+                        <div class="form-group">
+                            <label style= "float: left " for="pwd_reg">Contraseña:</label>
+                            <input type="password" class="form-control" id="pwd_reg">
+                        </div>
+                        <button class="btn btn-success w-100">Registrarse</button>
 
-    <form class="form-inline" action="/action_page.php">
-        <div class="form-group">
-            <label for="username_ini">Usuario:</label>
-            <input type="email" class="form-control" id="username_ini" placeholder="Enter username" name="username">
+                    </div>
 
+                </div>
+            </div>
         </div>
-    </form>
-    <form class="form-inline" action="/action_page.php">
-        <div class="form-group">
-            <label for="contraseña_ini">Contraseña:</label>
-            <input type="password" class="form-control" id="contraseña_ini" placeholder="Enter password" name="contraseña">
-        </div>
-    </form>
-    <button id="ini" type="iniciar_s" class="btn btn-primary">Iniciar sesión</button>
-
-</div>
-<div id="registro" class="container-fluid text-center">
-    <h2>Registrarse</h2>
-
-    <form class="form-inline" action="/action_page.php">
-        <div class="form-group">
-            <label for="username_reg">Usuario:</label>
-            <input type="email" class="form-control" id="username_reg" placeholder="Enter username" name="username">
-
-        </div>
-    </form>
-    <form class="form-inline" action="/action_page.php">
-        <div class="form-group">
-            <label for="contraseña_reg">Contraseña:</label>
-            <input type="password" class="form-control" id="contraseña_reg" placeholder="Enter password" name="contraseña">
-        </div>
-    </form>
-    <button id="reg" type="input" class="btn btn-primary">Registrarse</button>
-
+    </div>
 </div>
 <div id="test" class="jumbotron text-center">
 
     <h1>Nombre juego</h1>
 
+    <p>El mejor juego.</p>
+    <p>El mejor juego.</p>
+    <p>El mejor juego.</p>
+    <p>El mejor juego.</p>
+    <p>El mejor juego.</p>
+    <p>El mejor juego.</p>
+    <p>El mejor juego.</p>
+    <p>El mejor juego.</p>
     <p>El mejor juego.</p>
 
 
