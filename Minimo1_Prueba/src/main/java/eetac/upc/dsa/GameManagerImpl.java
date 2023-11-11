@@ -4,22 +4,28 @@ import java.util.LinkedList;
 import java.util.List;
 import org.apache.log4j.Logger;
 
-import eetac.upc.dsa.models.User;
-import eetac.upc.dsa.models.Game;
+import eetac.upc.dsa.models.Jugador;
+import eetac.upc.dsa.models.Partida;
+import eetac.upc.dsa.models.Avatar;
+import eetac.upc.dsa.models.Mapa;
+import eetac.upc.dsa.models.Tienda;
 
 public class GameManagerImpl implements GameManager {
     private static GameManager instance;
-    protected List<Game> Games;
-    protected List<User> Users;
-    protected List<Game> Juegos;
-    protected List<User> Usuarios;
+    protected List<Partida> Partidas;
+    protected List<Jugador> Jugadores;
+    protected List<Partida> Jugadas;
+    protected List<Avatar> Avatares;
+    protected List<Mapa> Mapas;
+    protected List<Tienda> Productos;
 
     final static Logger logger = Logger.getLogger(GameManagerImpl.class);
     private GameManagerImpl() {
-        this.Games = new LinkedList<>();
-        this.Users = new LinkedList<>();
-        this.Juegos = new LinkedList<>();
-        this.Usuarios = new LinkedList<>();
+        this.Partidas = new LinkedList<>();
+        this.Jugadores = new LinkedList<>();
+        this.Avatares = new LinkedList<>();
+        this.Mapas = new LinkedList<>();
+        this.Productos = new LinkedList<>();
     }
 
     public static GameManager getInstance() {
@@ -28,68 +34,65 @@ public class GameManagerImpl implements GameManager {
         return instance;
     }
 
-    public int GameSize() {
-        int ret = this.Games.size();
+    public int PartidaSize() {      // Número de partidas creadas
+        int ret = this.Partidas.size();
         logger.info("Game size " + ret);
-
         return ret;
     }
 
-    public int JuegosSize() {
-        int ret = this.Juegos.size();
+    public int JuegosSize() {       // Número de partidas jugadas
+        int ret = this.Jugadas.size();
         logger.info("Se ha jugado a " + ret + "Juegos");
         return ret;
     }
 
-    public int UsuariosSize() {
-        int ret = this.Usuarios.size();
-        logger.info("Han jugado " + ret + "usuarios");
+    public int JugadoresSize() {    // Número de jugadores
+        int ret = this.Jugadores.size();
+        logger.info("Jugadores size " + ret);
         return ret;
     }
 
+    public Partida addPartida(Partida p) {
+        logger.info("Nueva partida " + p);
 
-    public int UserSize() {
-        int ret = this.Users.size();
-        logger.info("User size " + ret);
-
-        return ret;
+        this.Partidas.add (p);
+        logger.info("Nueva partida añadida");
+        return p;
     }
+    public Partida addPartida(int dif, int idPlayer, int idMapa) { return this.addPartida(new Partida(dif, idPlayer, idMapa)); }
 
-    public Game addGame(Game g) {
-        logger.info("new Game " + g);
+    public Jugador addJugador(Jugador j) {
+        logger.info("new Jugador " + j);
 
-        this.Games.add (g);
-        logger.info("new Game added");
-        return g;
+        this.Jugadores.add (j);
+        logger.info("new Jugador added");
+        return j;
     }
-    public Game addGame(String description, int levels) { return this.addGame(new Game(description, levels)); }
+    public Jugador addJugador(String username, String mail, String pasword) { return this.addJugador(new Jugador(username, mail, pasword)); }
 
-    public User addUser(User u) {
-        logger.info("new User " + u);
-
-        this.Users.add (u);
-        logger.info("new User added");
-        return u;
-    }
-    public User addUser(String user_name) { return this.addUser(new User(user_name)); }
-
-    public void startGame(Game g, User u) {
-        if(u.GetPartida() != true)
-        {
-            logger.info(u.GetUserName()+ " inicia " +g.GetDescription());
-            u.SetLevel(1);
-            u.SetPartida(true);
-            u.SetPoints(50);
-            this.Juegos.add(g);
-            this.Usuarios.add(u);
+    // Que pasa si yo ya tengo una partida guardada de antes??
+    // Cómo se tendría que inciar?
+    public void startPartida(Partida p, Jugador j, Mapa m, Avatar a) {        // El jugador inicicia una partida
+        if(p.GetMapId() == -1){     // Un id negativo implica que la partida es nueva
+            logger.info(j.GetUserName() + " inicia partida en el nivel 1");
+            p.SetNivel(1);
+            p.SetMapaId(m.GetId());
+            j.SetPoints(50);
+            this.Mapas.add(m);
+            this.Jugadores.add(j);
         }
-        if(u.GetPartida() == true)
-        {
-            logger.error("Error, el ususario ya está en una partida");
-        }
+        /* else{
+            logger.info(j.GetUserName() + " inicia partida en el nivel" + p.GetNivel());
+            p.SetNivel(1);
+            p.SetMapaId(m.GetId());
+            j.SetPoints(50);
+            this.Mapas.add(m);
+            this.Jugadores.add(j);
+        } */
+
     }
 
-    public Game getGame(int id) {
+    public Partida getPartida(int id) {
         logger.info("getGame("+id+")");
 
         for (Game g: this.Games) {

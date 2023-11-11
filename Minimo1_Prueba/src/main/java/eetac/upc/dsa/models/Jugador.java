@@ -27,6 +27,8 @@ public class Jugador {
     public int  GetUserId(){return this.id;}
     public String GetUserName(){return this.username;}
     public void SetUserName(String username){this.username = username;}
+    public String GetPasword(){return this.pasword;}
+    public void SetPasword(String pasword){this.pasword = pasword;}
     public String GetMail(){return this.mail;}
     public void SetMail(String mail){this.mail = mail;}
     public int GetPoints(){return this.points;}

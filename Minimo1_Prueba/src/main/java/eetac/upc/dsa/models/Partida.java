@@ -13,7 +13,7 @@ public class Partida {
     int idMapa;     // Identificador del mapa que se está jugando
 
     // Constructores
-    public Partida(){this.id = nextID.incrementAndGet();}
+    public Partida(){this.id = nextID.incrementAndGet(); this.idMapa = -1;}
     public Partida(int dif, int idPlayer, int idMapa){
         this();
         this.id = nextID.incrementAndGet();

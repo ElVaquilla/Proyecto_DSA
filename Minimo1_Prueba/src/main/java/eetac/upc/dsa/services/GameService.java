@@ -2,8 +2,8 @@ package eetac.upc.dsa.services;
 
 import eetac.upc.dsa.GameManager;
 import eetac.upc.dsa.GameManagerImpl;
-import eetac.upc.dsa.models.Game;
-import eetac.upc.dsa.models.User;
+import eetac.upc.dsa.models.Partida;
+import eetac.upc.dsa.models.Jugador;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -15,11 +15,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
+
 @Api(value = "/games", description = "Endpoint to Game Service")
 @Path("/games")
 public class GameService {
     private GameManager gm;
-
+    /*
     public GameService() {
         this.gm = GameManagerImpl.getInstance();
         if (gm.GameSize()==0) {
@@ -96,4 +97,5 @@ public class GameService {
         else
             return Response.status(404).build();
     }
+    */
 }
