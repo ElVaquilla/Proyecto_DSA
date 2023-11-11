@@ -15,10 +15,10 @@
         padding: 50px 25px;
 
        }
-       .bg-1 {
+       .bg-1{
         background-color: #f4511e;
         color: #fff;
-        margin: 0px 0;
+        margin: 100px 0;
         padding: 10px 25px;
 
        }
@@ -32,13 +32,16 @@
         color: #fff;
         margin: 0px 0;
         padding: 15px 25px;
-
-
-
+        }
+       .bt-1 {
+       padding: 10px 25px;
+       margin: 7px 0;
+       //width:100px;
        }
-        .btn-group{
-        text-align: right;
-      }
+
+
+
+
         .pull-right {
         float: right !important;
       }
@@ -66,7 +69,6 @@
   border-color: transparent;
   color: #fff !important;
 }
-
     </style>
     <script>
         $(document).ready(function(){
@@ -90,6 +92,36 @@
             $("#inicio").show();
             $("#test").show();
           });
+          $("tienda").click(function(){
+            $("#test").hide();
+            //$.get("http://localhost:8080/dsaApp/tracks", function(data, status){
+            //alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+            fetch('http://localhost:8080/dsaApp/tracks')
+            .then(response => response.json())
+            .then(data => {
+
+             var tabla = document.createElement('table');
+
+             // por cada dato se crea una fila
+             for (const fila of data){
+             let tr = document.createElement('tr');
+
+             // otro bucle para recorrer los datos de cada objeto
+             for (const atributo of Object.values(fila)) {
+
+             var celda = document.createElement('td');
+             celda.textContent = atributo;
+             celda.style.border = '1px solid';
+             tr.appendChild(celda);
+             }
+
+             tr.appendChild(celda);
+
+             tabla.appendChild(tr);
+             }
+             document.body.appendChild(tabla);
+            })
+          });
         });
     </script>
 </head>
@@ -107,9 +139,9 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#about">ABOUT</a></li>
-                <li><a href="#tienda">TIENDA</a></li>
-                <li><button id="inicio_buton" type="button" class="btn btn-primary">Iniciar sesión</button></li>
-                <li><button id="regis_buton" type="button" class="btn btn-primary">Registrarse</button></li>
+                <li><a id="tienda" href="#about">TIENDA</a></li>
+                <li><button id="inicio_buton" type="button" class="btn btn-primary bt-1 w-10">Iniciar sesión</button></li>
+                <li><button id="regis_buton" type="button" class="btn btn-primary bt-1 w-10">Registrarse</button></li>
 
 
             </ul>
