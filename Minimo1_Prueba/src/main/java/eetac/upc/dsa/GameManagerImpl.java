@@ -91,7 +91,7 @@ public class GameManagerImpl implements GameManager {
         } */
 
     }
-
+    /*
     public Partida getPartida(int id) {
         logger.info("getGame("+id+")");
 
@@ -113,11 +113,12 @@ public class GameManagerImpl implements GameManager {
         return g.GetLevels();
     }
 
+    */
 
-    public User getUser(int id) {
+    public Jugador getJugador(int id) {
         logger.info("getUser("+id+")");
 
-        for (User u: this.Users) {
+        for (Jugador u: this.Jugadores) {
             if (u.GetUserId() == id) {
                 logger.info("getUser("+id+"): "+u);
 
@@ -128,7 +129,7 @@ public class GameManagerImpl implements GameManager {
         logger.error("not found " + id);
         return null;
     }
-
+    /*
     @Override
     public int getLevel(int id) {
         User u = this.getUser(id);
@@ -192,4 +193,6 @@ public class GameManagerImpl implements GameManager {
         }
         return u;
     }
+
+     */
 }
